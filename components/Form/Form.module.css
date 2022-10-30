@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "Formular";
+  src: url("fonts/Formular.ttf");
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.firstCol {
+  display: flex;
+  font-family: Rubik, sans-serif;
+  column-gap: 19px;
+  width: 100%;
+  max-width: 953px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 7px;
+  width: 100%;
+}
+
+.item select {
+  cursor: pointer;
+}
+
+.item select,
+.item input {
+  appearance: none;
+  background: none;
+  border: none;
+  color: #000000;
+  outline: none;
+}
+
+.item svg {
+  position: absolute;
+  right: 0;
+  top: calc(50% + 6px);
+}
+
+.item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: #000000;
+}
+
+.item select:invalid {
+  color: #a3a6a9;
+}
+
+.item label {
+  height: 29px;
+}
+
+.btn {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  font-family: "Formular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  color: #a3a6a9;
+  cursor: pointer;
+  min-width: 123px;
+}
+
+.btn svg {
+  width: 12px;
+  margin-left: 12px;
+}
+
+@media (max-width: 900px) {
+  .form,
+  .firstCol {
+    flex-direction: column;
+    row-gap: 16px;
+    flex-basis: content;
+  }
+
+  .item {
+    width: 100%;
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+}
