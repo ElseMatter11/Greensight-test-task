@@ -11,15 +11,18 @@ type Props = {
 export const Item = ({ vac }: Props) => {
   const [fold, setFold] = useState(true);
   const toggleFold = () => setFold(!fold);
-
+  var logoUrl="/src/kit.png";
+  if (vac.employer.logo_urls){
+    logoUrl=vac.employer.logo_urls.original
+  }
   return (
     <li key={vac.id} className={styles.item}>
       <div className={styles.firstColumn}>
-        {vac.employer.logo_urls && (
+        {logoUrl && (
           <Image
             width="373"
             height="95"
-            src={vac.employer.logo_urls?.original}
+            src={logoUrl}
             alt="Лого"
             className={styles.image}
           ></Image>

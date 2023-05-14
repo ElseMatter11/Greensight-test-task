@@ -98,3 +98,10 @@
   margin: 0;
   cursor: pointer;
 }
+.reqButton{
+  border: 0;
+  margin-left: 50%;
+  font-size: 20px;
+  background-color: #ffffff;
+  cursor: pointer;
+}

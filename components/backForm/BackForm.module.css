@@ -1,0 +1,30 @@
+.footer{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    }
+.form{
+    display: flex;
+    width: 28% ;
+    flex-direction: column;
+}
+.extra{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+.input{
+    border: 0;
+    border-bottom: 1px solid black;
+    outline: 0;
+    margin-bottom: 29px;
+    margin-top: 12px;
+}
+.button{
+    font-size: 16px;
+    color: aliceblue;
+    width: 50%;
+    justify-self: left;
+    background-color: black;
+    min-height: 48px;
+}
