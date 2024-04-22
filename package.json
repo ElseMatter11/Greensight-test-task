@@ -10,15 +10,18 @@
   },
   "dependencies": {
     "@svgr/webpack": "^6.5.1",
-    "axios": "^1.1.3",
+    "axios": "^1.6.8",
     "next": "^13.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-text-mask": "^5.5.0",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/node": "18.11.7",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
+    "@types/react-text-mask": "^5.4.14",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.0",
     "typescript": "4.8.4"

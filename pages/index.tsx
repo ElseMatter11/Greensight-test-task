@@ -48,7 +48,9 @@ export type Vac = {
   vacan: { schedule: { name: string }; description: string };
   empl: { site_url: string };
 };
+
 const refe=`https://api.hh.ru/vacancies?specialization=1.221&page=1&per_page=5`
+
 export const getStaticProps: GetStaticProps<{
   vacancies: Vac[];
 }> = async () => {
@@ -79,11 +81,12 @@ export const getStaticProps: GetStaticProps<{
 export default function Home({
   vacancies,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [formFilter, setFormFilter] = useState("");
+  const [formFilter1, setFormFilter1] = useState("");
   const [countPages, setCountPages] = useState(2);
   const [currentList,setList] = useState(vacancies)
   const re=`https://api.hh.ru/vacancies?specialization=1.221&page=${countPages}&per_page=5`
   let vaca:Vac[]
+  
   async function newReq(){
       vaca = (
         await axios.get<{ items: Vac[] }>(
@@ -101,25 +104,30 @@ export default function Home({
           return { ...vac, vacan, empl };
         })
       );
+
     setCountPages(countPages+1);
     setList(currentList.concat(vaca));
   }
   return (
-    <section className={styles.section}>
+    <><section className={styles.section}>
       <h1 className={styles.h1}>List of vacancies</h1>
-      <Form vacancies={currentList} setFilter={setFormFilter} />
+      <Form vacancies={currentList} setFilter1={setFormFilter1} />
       <ul className={styles.list}>
         {currentList
-          .filter((vac) =>
-            formFilter ? vac.vacan.schedule.name === formFilter : true
+          .filter((vac) => formFilter1 ? vac.vacan.schedule.name === formFilter1 : true
           )
           .map((vac) => (
             <Item vac={vac} key={vac.id} />
           ))}
       </ul>
       <button type="button" onClick={newReq} className={styles.reqButton}>Show more</button>
-      <h2>Leave a request</h2>
-      <BackForm/>
     </section>
+    <footer className={styles.fo}>
+    <h2>Leave a request</h2>
+    <BackForm />
+    </footer>
+    
+    </>
+    
   );
 }

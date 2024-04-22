@@ -1,7 +1,9 @@
 .section {
-  max-width: 1248px;
+  max-width: 1200px;
   padding: 0 24px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .h1 {
@@ -24,38 +26,28 @@
 .item {
   position: relative;
   display: flex;
+  flex-direction: column;
   background: #ffffff;
-  border: 1px solid #000000;
-  padding: 20px;
-  margin-bottom: 24px;
+  border: none;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 32px;
   column-gap: 93px;
+  box-shadow: 0px 0px 16px 0px #1E1E1E1A;
 }
 
-@media (max-width: 900px) {
-  .item {
-    flex-direction: column;
-  }
 
-  .h1 {
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 38px;
-  }
-  .image {
-    max-width: 100%;
-    align-self: center;
-  }
-  .btn {
-    position: unset !important;
-  }
-}
 
 .firstColumn {
-  font-family: Rubik, sans-serif;
+  font-family: Roboto, sans-serif;
   display: flex;
   flex-direction: column;
 }
-
+.firstColumn div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .secondColumn {
   font-family: Roboto, sans-serif;
   transition: all 250ms ease-in-out;
@@ -86,12 +78,26 @@
   max-height: 100%;
   padding-bottom: 30px;
 }
+.respButton{
+  height: 44px;
+  max-width: 125px;
+  width: 100%;
+  justify-self: flex-end;
+  height: Fixed (44px)px;
+border-radius: 4px;
+color: #ffffff;
+border: none;
+background: #383838;
+cursor: pointer;
 
+}
 .btn {
   position: absolute;
+  display: flex;
+  align-items: center;
   bottom: 20px;
-  left: calc(50% + 200px);
-  color: #a3a6a9;
+  left: 46%;
+  color: #0D7AD9;
   background: none;
   border: none;
   padding: 0;
@@ -99,9 +105,63 @@
   cursor: pointer;
 }
 .reqButton{
+  padding: 0;
+  max-width: 180px;
+  width: 100%;
+  height: 35px;
   border: 0;
-  margin-left: 50%;
-  font-size: 20px;
-  background-color: #ffffff;
+  border-radius: 4px;
+  color: #ffffff;
+  background-color: #0D7AD9;
   cursor: pointer;
+  align-self: center;
+  font-family: Roboto;
+font-size: 15px;
+font-weight: 700;
+line-height: 21px;
+letter-spacing: 0.02em;
+text-align: center;
+margin-bottom: 32px;
+}
+
+.fo{
+  background-color: #F7F9FB;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 720px) {
+  .item {
+    flex-direction: column;
+  }
+  .firstColumn div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .firstColumn div div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .firstColumn div h2,.respButton,.firstColumn div p,.reqButton{
+    max-width: 720px;
+    width: 100%;
+  }
+  .respButton{
+    margin-top: 24px;
+  }
+  .h1 {
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .image {
+    max-width: 100%;
+    align-self: center;
+  }
+  .btn {
+    left: 42%;
+  }
 }

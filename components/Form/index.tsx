@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction, useRef } from "react";
+import { ChangeEvent, Dispatch, SetStateAction, useRef, useState } from "react";
 
 import { Vac } from "../../pages";
 
@@ -9,11 +9,13 @@ import styles from "./Form.module.css";
 
 type Props = {
   vacancies: Vac[];
-  setFilter: Dispatch<SetStateAction<string>>;
+  setFilter1: Dispatch<SetStateAction<string>>;
 };
 
-export const Form = ({ vacancies, setFilter }: Props) => {
-  const ref = useRef<HTMLSelectElement>(null);
+export const Form = ({ vacancies, setFilter1}: Props) => {
+  const ref1 = useRef<HTMLSelectElement>(null);
+  const ref2 = useRef<HTMLSelectElement>(null);
+  const [clear,setClear] = useState(true)
   const forms = Array.from(
     new Set(
       vacancies.reduce(
@@ -23,13 +25,20 @@ export const Form = ({ vacancies, setFilter }: Props) => {
     )
   );
 
-  const changeFilter = (e: ChangeEvent<HTMLSelectElement>) =>
-    setFilter(e.target.value);
+  const changeFilter = () =>{
+    if (ref1.current) {
+      setFilter1(ref1.current.value) ;
+      setClear(false);
+    }}
 
   const clearFilter = () => {
-    setFilter("");
-    if (ref.current) {
-      ref.current.value = "";
+    setFilter1("");
+    setClear(true);
+    if (ref1.current) {
+      ref1.current.value = "";
+    }
+    if (ref2.current) {
+      ref2.current.value = "";
     }
   };
 
@@ -39,8 +48,7 @@ export const Form = ({ vacancies, setFilter }: Props) => {
         <div className={styles.item}>
           <label htmlFor="select">Form</label>
           <select
-            ref={ref}
-            onChange={changeFilter}
+            ref={ref1}
             required
             defaultValue=""
             id="select"
@@ -57,14 +65,31 @@ export const Form = ({ vacancies, setFilter }: Props) => {
           <Chevron />
         </div>
         <div className={styles.item}>
-          <label>Position</label>
-          <input placeholder="Unspecified"></input>
+          <label htmlFor="select">Position</label>
+          <select
+          ref={ref2}
+          required
+            defaultValue=""
+            id="select"
+          >
+            <option value="" disabled hidden>
+              Not selected
+            </option>
+            <option value="1" >
+              1
+            </option>
+          </select>
+          <Chevron />
         </div>
+        <button type="button" className={styles.search} onClick ={changeFilter} >Search</button>
       </div>
-      <button type="button" onClick={clearFilter} className={styles.btn}>
-        Clear sorting
-        <Cross />
-      </button>
+      {!clear?
+      <button type="button" onClick={clearFilter} className={styles.btn} >
+      <Cross/>
+      <div >Clear filters</div>
+      </button>:
+      <div></div>
+      }
     </form>
   );
 };
